@@ -1,0 +1,39 @@
+This is the most recent code for extracting gene groups, with the update to the block distance metric to remove infinities. 
+
+The usage is:
+
+./findTransitionGenesets cmint_result_dir celltypeorder OGID_file srccelltype threshold outputdir maxgenesetsize plots_species_order
+
+here cmint_result_dir - the output directory of results, example of input format of the files is in example_in. 
+celltypeorder and OGID_file -  a species order list and gene orthology file, respectively. 
+srccelltype - the source species the analysis should be mapped to. 
+threshold - determines the heirarchical clustering, typical setting is 0.05
+outputdir - output directory
+maxgenesetsize - minimum size the extracted gene sets/clusters should have to be written out
+plots_species_order - listed order of species as the expression in the output plots should be organized. 
+
+ ./findTransitionGenesets example_in SpeciesOrder.txt OGIDS_ARB_CORR_2Dup.txt homo_sapiens 0.05 example_out 10 SpeciesOrder.txt 
+
+The outputs include 
+
+1. a file with plot information for each gene group with 10 or more genes, with file names of the form clusterset117.txt. These files contain direct input for Heatmap.awk to make plots. 
+2. all_genesets.txt - a set of gene lists for the extracted gene groups in the format for enrichAnalyzer
+3. all_assign.txt - plot of all gene groups as I understand. 
+4. ordered_clusterset_means.txt - summary plot of cluster means, again this is direct input for Heatmap.awk.
+
+And examples of these outputs are in the example_out directory. 
+
+Example code for how to make these files into plots with Heatmap.awk is as follows. 
+
+export HMAWK=/mnt/ws/sysbio/roygroup/shared/scripts/figscripts/Heatmap.awk
+cat example_out/ordered_clusterset_means.txt | ${HMAWK} -vStrokeC="-" -vStrokeSC="black" -vL="ClusterAssignment ChIPActivity Missing" -vD="space" -vLegendNum="5" -vC="1:(0,205,0);3:(255,255,0);5:(205,0,0) -2.0:(0,255,0);0:(0,0,0);2.0:(255,0,0) 0:(105,105,105)" -vFontSize=8 > CMINTExtractionSummary.svg
+
+for F in `ls example out/ | grep clusterset`
+do
+        export NM=`echo $F | sed 's/.txt/.svg/g'`
+        cat example_out/${F} | ${HMAWK} -vStrokeC="-" -vStrokeSC="black" -vL="ClusterAssignment ChIPActivity Missing" -vD="space" -vLegendNum="5" -vC="1:(0,205,0);3:(255,255,0);5:(205,0,0) -2.0:(0,255,0);0:(0,0,0);2.0:(255,0,0) 0:(105,105,105)" -vFontSize=8 > <plot_dir>/${NM}
+done
+
+The colormaps here assume five clusters, which you can adjust according to your specific application. 
+
+Sara

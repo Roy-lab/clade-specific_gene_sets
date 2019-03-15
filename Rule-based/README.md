@@ -18,7 +18,7 @@ This file contains tree information, which is corresponding to the columns of th
 
 Example of matrix (table at top), species tree with node number corresponding to the column index and config.txt 
 ![Example](http://pages.discovery.wisc.edu/~jshin/multi-species-proteome/config_making_example.png)
-```
+
  1. First step to make config file is to set one specific "objective" clade, which contains one of more ancestral nodes and extant nodes.
  - e.g. *clade3 of dicots (clade with Anc3)* or *clade5 of monocots (clade with Anc5)* in the example figure.
  
@@ -37,4 +37,3 @@ Example of matrix (table at top), species tree with node number corresponding to
  - **matrix**: result matrix from Arboretum
    * cluster IDs should correspond to the expression level, i.e. larger number, highly expressed.
    * missing values should be replaced as "0".
-```

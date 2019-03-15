@@ -35,5 +35,5 @@ Example of matrix (table at top), species tree with node number corresponding to
  4. Indicate data file locations:
  >- **gnlist**: list of all orthogroups
  >- **matrix**: result matrix from Arboretum
- >   * cluster IDs should correspond to the expression level, i.e. larger number, highly expressed.
+ >   * cluster IDs should correspond to the expression level, *i.e.* the larger number, the highly expressed.
  >   * missing values should be replaced as "0".

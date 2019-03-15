@@ -5,7 +5,7 @@ Example usage:
 ```
 ./run_selection.sh [config_file] [in|de]
 
-_e.g._
+*e.g.*
 ./run_selection.sh config_clade1_moss.txt in
 ```
 

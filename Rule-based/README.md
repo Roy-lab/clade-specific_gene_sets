@@ -1,4 +1,4 @@
-## run_selection.sh
+### run_selection.sh
 A running shell script for rule-based selection.
 
 Example usage:
@@ -13,7 +13,7 @@ Example usage:
 ./run_selection.sh **config_clade1_moss.txt** **in**
 
 
-## Requirement: config.txt file
+### Requirement: config.txt file
 This file contains tree information, which is corresponding to the columns of the matrix.
 
 Example of matrix (table at top), species tree with node number corresponding to the column index and config.txt 

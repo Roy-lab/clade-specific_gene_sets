@@ -20,12 +20,10 @@ Example of matrix (table at top), species tree with node number corresponding to
 ![Example](http://pages.discovery.wisc.edu/~jshin/multi-species-proteome/config_making_example.png)
 
  1. First step to make config file is to set one specific "objective" clade, which contains one of more ancestral nodes and extant nodes.
- ```
- *e.g. clade3 of dicots (clade with Anc3)* or *clade5 of monocots (clade with Anc5)* in the example figure.
- ```
- 
+ >*e.g. clade3 of dicots (clade with Anc3)* or *clade5 of monocots (clade with Anc5)* in the example figure.
+  
  2. Then the each contents would be:
- - **target_anc_point**: most top ancestor of the objective clade
+ >- **target_anc_point**: most top ancestor of the objective clade
  - **object**: all nodes in the objective clade
  - **extant**: most extant nodes in the objective clade
  - **subancestor**: ancestral node within the clade. This is optional, so if "subancestor" doesn't exists, remain it as blank.

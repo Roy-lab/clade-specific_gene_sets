@@ -4,11 +4,13 @@ A running shell script for rule-based selection.
 Example usage:
 ```
 ./run_selection.sh [config_file] [in|de]
+ - in: increased case
+ - de: decreased case
 ```
 
 *e.g.*
 
-./run_selection.sh config_clade1_moss.txt in
+./run_selection.sh **config_clade1_moss.txt** **in**
 
 ### Requirements
 

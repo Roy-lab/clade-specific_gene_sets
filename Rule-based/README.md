@@ -24,16 +24,16 @@ Example of matrix (table at top), species tree with node number corresponding to
   
  2. Then the each contents would be:
  >- **target_anc_point**: most top ancestor of the objective clade
- - **object**: all nodes in the objective clade
- - **extant**: most extant nodes in the objective clade
- - **subancestor**: ancestral node within the clade. This is optional, so if "subancestor" doesn't exists, remain it as blank.
- - **ancestor**: ancestral nodes outside/upper of the objective clade
- - **negate**: ancestral and extant nodes outside of the objective clade, which are in the same or underneath level of the objective calde
+ >- **object**: all nodes in the objective clade
+ >- **extant**: most extant nodes in the objective clade
+ >- **subancestor**: ancestral node within the clade. This is optional, so if "subancestor" doesn't exists, remain it as blank.
+ >- **ancestor**: ancestral nodes outside/upper of the objective clade
+ >- **negate**: ancestral and extant nodes outside of the objective clade, which are in the same or underneath level of the objective calde
  
  3. Each node (column) number should be delimited by " " (one space/blank)
  
  4. Indicate data file locations:
- - **gnlist**: list of all orthogroups
- - **matrix**: result matrix from Arboretum
-   * cluster IDs should correspond to the expression level, i.e. larger number, highly expressed.
-   * missing values should be replaced as "0".
+ >- **gnlist**: list of all orthogroups
+ >- **matrix**: result matrix from Arboretum
+ >   * cluster IDs should correspond to the expression level, i.e. larger number, highly expressed.
+ >   * missing values should be replaced as "0".

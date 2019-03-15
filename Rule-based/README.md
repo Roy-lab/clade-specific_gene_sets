@@ -15,6 +15,7 @@ Example usage:
 
 ## Requirement: config.txt file
 This file contains tree information, which is corresponding to the columns of the matrix.
+
 Example of matrix (table at top), species tree with node number corresponding to the column index and config.txt 
 ![Example](http://pages.discovery.wisc.edu/~jshin/multi-species-proteome/config_making_example.png)
  - each node (column) number should be delimited by " "

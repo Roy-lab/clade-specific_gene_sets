@@ -17,4 +17,9 @@ Example usage:
  - and assign gene sets by the cluster assignments of branch length at 0.3 of hierarchical clustering.
 
 
-### Requirement: findTransitionGenesets_miss
+### Requirements: 
+1. findTransitionGenesets_miss
+C++ program for doing hierarchical clustering by allowing missing cells in the profile.
+Compile code by type "make" in the code/ directory.
+
+2. 

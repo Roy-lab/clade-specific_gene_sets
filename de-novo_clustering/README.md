@@ -19,7 +19,25 @@ Example usage:
 
 ### Requirements: 
 1. findTransitionGenesets_miss
- - C++ program for doing hierarchical clustering by allowing missing cells in the profile.
- - Compile code by executing "make" in the **code/** directory.
+>- C++ program for doing hierarchical clustering by allowing missing cells in the profile.
+>- Compile code by executing "make" in the **code/** directory.
 
-2. 
+2. input/allspecies_clusterassign.txt
+>- Cluster assignment matrix. Result file of Arboretum.
+>- Note: file name should be "allspecies_clusterassign.txt" since the **findTransitionGenesets_miss** recognize this name.
+
+3. input/speciesorder.txt
+>- List of Species names, ordered by species tree (without ancestors)
+>- *e.g.*
+```
+PHYPA
+ORYSJ
+MAIZE
+SOLTU
+MEDTR
+ARATH
+```
+
+4. input/OGID_4_denovo.txt
+>- List of orthogroups (OGs), with profile of gene IDs which is ordered by species tree (note that same order with **speciesorder.txt**)
+>- If 

@@ -39,5 +39,14 @@ ARATH
 ```
 
 4. input/OGID_4_denovo.txt
->- List of orthogroups (OGs), with profile of gene IDs which is ordered by species tree (note that same order with **speciesorder.txt**)
->- If 
+>- List of orthogroups (OGs), with profile of gene IDs which is ordered by species tree 
+  (note that same order with **speciesorder.txt**)
+>- format: " **OGID[\t]GeneID,GeneID,GeneID,...** "
+>- Write "NONE" if there's no species gene ID assigned to the OG.
+>- *e.g.*
+```
+OG474_1	PP1S125_69V6,NONE,NONE,NONE,NONE,AT3G13810
+OG474_2	PP1S63_51V6,NONE,NONE,PGSC0003DMG400019342,MTR_2g099990,AT5G60470
+OG474_3	NONE,Os01g0242200,Zm00001d009030,PGSC0003DMG400024700,MTR_8g017210,AT5G66730
+OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
+```

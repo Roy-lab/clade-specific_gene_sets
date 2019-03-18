@@ -19,7 +19,7 @@ This file contains tree information, which is corresponding to the columns of th
 Example of matrix (table at top), species tree with node number corresponding to the column index and config.txt 
 ![Example](http://pages.discovery.wisc.edu/~jshin/multi-species-proteome/config_making_example.png)
 
- 1. First step to make config file is to set one specific "objective" clade, which contains one of more ancestral nodes and extant nodes. (red circle in example figure)
+ 1. First step to make config file is to set one specific "objective" clade, which contains one of more ancestral nodes and extant nodes. (red circles in the example figure)
  >*e.g. clade3 of dicots (clade with Anc3)* or *clade5 of monocots (clade with Anc5)* in the example figure.
   
  2. Then the each contents would be:
@@ -28,7 +28,7 @@ Example of matrix (table at top), species tree with node number corresponding to
  >- **extant**: most extant nodes in the objective clade
  >- **subancestor**: ancestral node within the clade. This is optional, so if "subancestor" doesn't exists, remain it as blank.
  >- **ancestor**: ancestral nodes outside/upper of the objective clade
- >- **negate**: ancestral and extant nodes outside of the objective clade, which are in the same or underneath level of the objective calde
+ >- **negate**: ancestral and extant nodes outside of the objective clade, which are in the same or underneath level of the objective calde (blue circies in the example figure)
  
  3. Each node (column) number should be delimited by " " (one space/blank)
  

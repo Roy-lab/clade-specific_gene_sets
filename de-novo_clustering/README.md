@@ -19,7 +19,7 @@ Example usage:
 
 ### Requirements: 
 1. findTransitionGenesets_miss
-C++ program for doing hierarchical clustering by allowing missing cells in the profile.
-Compile code by type "make" in the code/ directory.
+ - C++ program for doing hierarchical clustering by allowing missing cells in the profile.
+ - Compile code by type "make" in the code/ directory.
 
 2. 

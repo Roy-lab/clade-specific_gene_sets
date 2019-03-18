@@ -4,7 +4,9 @@ A running shell script for de novo clustering selection.
 Example usage:
 ```
 ./run_findTransitionGenesets.sh [clustering_threshold] [missing_threshold]
- - clustering_threshold: threshold value for hierarchical clustering, number means branch length of the dendrogram [0, 1], which affects to the assignment of gene sets.
+ - clustering_threshold: threshold value for hierarchical clustering, 
+   number means branch length of the dendrogram [0, 1], 
+   which affects to the assignment of gene sets.
  - missing_threhsold: threshold count number for allowance of missing values in the profile
 ```
 

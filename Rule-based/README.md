@@ -23,7 +23,7 @@ Works on generalized types of newick trees.
  - One ancestral node can have only 1 or 2 extant nodes. (not 3 or more children allowed)
  - The file should be prepared as labeled at ancestral node as well.
  - Ancestral nodes should be named as "Anc#".
- - Any direction for the ancestral node label is working.
+ - Any direction for the ancestral node label is working: AncX(CHILD_A,CHILD_B) or (CHILD_A,CHILD_B)AncX
  - Refer to data/newick_tree.txt
  
  *e.g.*

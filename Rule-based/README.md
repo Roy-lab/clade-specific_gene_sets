@@ -27,9 +27,11 @@ Works on generalized types of newick trees.
  - Refer to data/newick_tree.txt
  
  *e.g.*
-**Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))**
-**(ppa,((osa,zma)Anc5,(stu,(mtr,ath)Anc4)Anc3)Anc2)Anc1**
- 
+Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))
+
+(ppa,((osa,zma)Anc5,(stu,(mtr,ath)Anc4)Anc3)Anc2)Anc1
+
+
 ### Requirement file 2: value_matrix.txt (tab delimited)
  - First row should be legend for data columns.
  - Values are meaning expression levels here. The higher value, the higher exression.
@@ -37,9 +39,10 @@ Works on generalized types of newick trees.
  - Refer to data/value_matrix.txt
 
  *e.g.*
-**OG_NAME	PHYPA	ORYSJ	MAIZE	Anc5	SOLTU	MEDTR	ARATH	Anc4	Anc3	Anc2	Anc1
+OG_NAME	PHYPA	ORYSJ	MAIZE	Anc5	SOLTU	MEDTR	ARATH	Anc4	Anc3	Anc2	Anc1
+
 OG918_2	0	0	0	0	1	6	0	1	1	1	1
+
 OG378_3	1	0	0	0	0	5	0	3	3	3	1
+
 OG557_4	0	0	0	0	0	4	0	4	4	4	1
-OG6895_2	0	0	0	0	0	4	0	4	4	4	1
-OG557_5	0	0	0	0	0	4	0	4	4	4	1**

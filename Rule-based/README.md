@@ -15,7 +15,7 @@ Example usage:
 
 *e.g.*
 
-./run_selection.sh  **data/newic_tree.txt**  **Anc3**  **increase**  **value_matrix.txt**  **example_result/Anc3_inc_config.txt**  **example_result/Anc3_inc_matrix.txt**
+**./run_selection.sh  data/newic_tree.txt  Anc3  increase  data/value_matrix.txt  example_result/Anc3_inc_config.txt  example_result/Anc3_inc_matrix.txt**
 
 
 

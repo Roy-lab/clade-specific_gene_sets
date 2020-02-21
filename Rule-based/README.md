@@ -48,7 +48,8 @@ OG455_2	0	2	2	1	4	0	0	0	4	1	1
 
 ### Result file 1: config.txt
 > * Parsed information of newick_tree.txt file with regarding to the target_node that user input
-
+> * see the example_result/Anc3_inc_config.txt
 
 ### Result file 2: matrix.txt (tab delimited)
 > * Filtered list of OGs from value_matrix.txt based on criteria that user input
+> * see the example_result/Anc3_inc_matrix.txt

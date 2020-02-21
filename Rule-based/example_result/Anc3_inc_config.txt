@@ -1,0 +1,7 @@
+tree=Anc1(PHYPA,Anc2(Anc5(ORYSJ,MAIZE),Anc3(SOLTU,Anc4(MEDTR,ARATH))))
+target_point=Anc3
+object=Anc3 MEDTR SOLTU ARATH Anc4
+extant=MEDTR SOLTU ARATH
+subancestor=Anc4
+ancestor=Anc1 Anc2
+negate=PHYPA Anc5 ORYSJ MAIZE

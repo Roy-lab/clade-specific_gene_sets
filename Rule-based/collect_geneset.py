@@ -117,7 +117,7 @@ for line in f:
 		if chk_cnt > 0:
 			continue
 
-	"""	
+	""" (omitted for flexibility)
 	## RULE3: All sub-clade has same increase/decrease tendency
 	if len(subancestors) == 0:
 		continue

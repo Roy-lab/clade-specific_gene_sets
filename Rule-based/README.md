@@ -1,4 +1,4 @@
-### run_selection.sh
+## run_selection.sh
 A running shell script for rule-based selection.
 
 Example usage:
@@ -48,3 +48,10 @@ OG918_2	0	0	0	0	1	6	0	1	1	1	1
 OG378_3	1	0	0	0	0	5	0	3	3	3	1
 
 OG455_2	0	2	2	1	4	0	0	0	4	1	1
+
+
+### Result file 1: config.txt
+ - Parsed information of newick_tree.txt file with regarding to the target_node that user input
+ 
+### Result file 2: value_matrix.txt (tab delimited)
+ - Filtered list of OGs from value_matrix.txt

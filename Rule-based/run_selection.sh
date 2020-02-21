@@ -10,6 +10,4 @@ OUT_MATRIX=$6	# output file name for resultant filtered matrix file
 
 python generate_config.py $NEWICK $TARGET $OUT_CONFIG
 
-python collect_geneset.py $CONFIG $MATRIX $DIRECTION $OUT_MATRIX
-
-
+python collect_geneset.py $OUT_CONFIG $MATRIX $DIRECTION $OUT_MATRIX

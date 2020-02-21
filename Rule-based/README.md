@@ -1,4 +1,4 @@
-## run_selection.sh
+### run_selection.sh
 A running shell script for rule-based selection.
 
 Example usage:

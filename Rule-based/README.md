@@ -23,14 +23,14 @@ Works on generalized types of newick trees.
  - One ancestral node can have only 1 or 2 extant nodes. (not 3 or more children allowed)
  - The file should be prepared as labeled at ancestral node as well.
  - Ancestral nodes should be named as "Anc#".
- - Any direction for the ancestral node label is working: AncX(CHILD_A,CHILD_B) or (CHILD_A,CHILD_B)AncX
+ - Any direction for the ancestral node label is working: AncX(child_A,child_B) or (child_A,child_B)AncX
  - Refer to data/newick_tree.txt
  
  *e.g.*
  
-Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))
+Anc1(PHYPA,Anc2(Anc5(ORYSJ,MAIZE),Anc3(SOLTU,Anc4(MEDTR,ARATH))))
 
-(ppa,((osa,zma)Anc5,(stu,(mtr,ath)Anc4)Anc3)Anc2)Anc1
+(PHYPA,((ORYSJ,MAIZE)Anc5,(SOLTU,(MEDTR,ARATH)Anc4)Anc3)Anc2)Anc1
 
 
 ### Requirement file 2: value_matrix.txt (tab delimited)

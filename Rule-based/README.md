@@ -54,4 +54,4 @@ OG455_2	0	2	2	1	4	0	0	0	4	1	1
  - Parsed information of newick_tree.txt file with regarding to the target_node that user input
  
 ### Result file 2: matrix.txt (tab delimited)
- - Filtered list of OGs from value_matrix.txt
+ - Filtered list of OGs from value_matrix.txt based on criteria that user input

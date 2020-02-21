@@ -3,37 +3,19 @@ A running shell script for rule-based selection.
 
 Example usage:
 ```
-./run_selection.sh [config_file] [in|de]
- - in: increased case
- - de: decreased case
+./run_selection.sh [newick.txt] [target_node_name] [increase|decrease] [matrix.txt] [ouput_config_name] [output_matrix_name]
+ - [newick.txt]: newick format tree (txt file)
+ - [target_node_name]: target node name (e.g. PHYPA, ANC3)
+ - [increase|decrease]: direction of alteration, input as "increase" or "decrease"
+ - [matrixt.txt]: value matrix file (txt file)
+ - [ouput_config_name]: output file name for config file
+ - [output_matrix_name]: output file name for resultant filtered matrix file
 ```
 
 *e.g.*
 
-./run_selection.sh **config_clade1_moss.txt** **in**
+./run_selection.sh **data/newic_tree.txt** **Anc3** **increase** **value_matrix.txt** **example_result/Anc3_inc_config.txt** **example_result/Anc3_inc_matrix.txt**
 
 
-### Requirement: config.txt file
-This file contains tree information, which is corresponding to the columns of the matrix.
-
-Example of matrix (table at top), species tree with node number corresponding to the column index and config.txt 
-![Example](http://pages.discovery.wisc.edu/~jshin/multi-species-proteome/config_making_example.png)
-
- 1. First step to make config file is to set one specific "objective" clade, which contains one of more ancestral nodes and extant nodes. (red circles in the example figure)
- >*e.g. clade3 of dicots (clade with Anc3)* or *clade5 of monocots (clade with Anc5)* in the example figure.
-  
- 2. Then the each contents would be:
- >- **target_anc_point**: most top ancestor of the objective clade
- >- **object**: all nodes in the objective clade
- >- **extant**: most extant nodes in the objective clade
- >- **subancestor**: ancestral node within the clade. This is optional, so if "subancestor" doesn't exists, remain it as blank.
- >- **ancestor**: ancestral nodes outside/upper of the objective clade
- >- **negate**: ancestral and extant nodes outside of the objective clade, which are in the same or underneath level of the objective calde (blue circies in the example figure)
- 
- 3. Each node (column) number should be delimited by " " (one space/blank)
- 
- 4. Indicate data file locations:
- >- **gnlist**: list of all orthogroups
- >- **matrix**: result matrix from Arboretum
- >   * cluster IDs should correspond to the expression level, *i.e.* the larger number, the highly expressed.
- >   * missing values should be replaced as "0".
+### Requirement: newick_tree.txt file
+### Requirement: value_matrix.txt file

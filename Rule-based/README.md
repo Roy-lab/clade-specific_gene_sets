@@ -23,8 +23,8 @@ Example usage:
 > * One ancestral node can have only 1 or 2 extant nodes. (not 3 or more children allowed)
 > * The file should be prepared as labeled at ancestral node as well.
 > * Ancestral nodes should be named as "Anc#".
-> * Any direction for the ancestral node label is working: AncX(child_A,child_B) or (child_A,child_B)AncX
 > * Refer to data/newick_tree.txt
+> * Any direction for the ancestral node label is working: AncX(child_A,child_B) or (child_A,child_B)AncX
 
 *e.g.*
 ``` 

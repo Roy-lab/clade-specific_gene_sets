@@ -20,7 +20,7 @@ Example usage:
 
 ### Requirement file 1: newick_tree.txt
 Works on generalized types of newick trees.
- - One ancestral node can have only 1 or 2 extant nodes as child. (not 3 or more children allowed)
+ - One ancestral node can have only 1 or 2 extant nodes. (not 3 or more children allowed)
  - The file should be prepared as labeled at ancestral node as well.
  - Ancestral nodes should be named as "Anc#".
  - Any direction for the ancestral node label is working.

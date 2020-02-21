@@ -34,7 +34,7 @@ Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))
 
 
 ### Requirement file 2: value_matrix.txt (tab delimited)
- - First row should be legend for data columns.
+ - First row should be legend for data columns: *e.g. OG_NAME (\t) col1 (\t) col2 (\t) ...*
  - Values are meaning expression levels here. The higher value, the higher exression.
  - "0" value means "missing value".
  - Refer to data/value_matrix.txt

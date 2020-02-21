@@ -20,12 +20,13 @@ Example usage:
 
 ### Requirement file 1: newick_tree.txt
 Works on generalized types of newick trees.
+```
  - One ancestral node can have only 1 or 2 extant nodes. (not 3 or more children allowed)
  - The file should be prepared as labeled at ancestral node as well.
  - Ancestral nodes should be named as "Anc#".
  - Any direction for the ancestral node label is working: AncX(child_A,child_B) or (child_A,child_B)AncX
  - Refer to data/newick_tree.txt
- 
+ ```
  *e.g.*
  
 Anc1(PHYPA,Anc2(Anc5(ORYSJ,MAIZE),Anc3(SOLTU,Anc4(MEDTR,ARATH))))
@@ -34,11 +35,12 @@ Anc1(PHYPA,Anc2(Anc5(ORYSJ,MAIZE),Anc3(SOLTU,Anc4(MEDTR,ARATH))))
 
 
 ### Requirement file 2: value_matrix.txt (tab delimited)
+```
  - First row should be legend for data columns: *e.g. OG_NAME (\t) col1 (\t) col2 (\t) ...*
  - Values are meaning expression levels here. The higher value, the higher exression.
  - "0" value means "missing value".
  - Refer to data/value_matrix.txt
-
+```
  *e.g.*
  
 OG_NAME	PHYPA	ORYSJ	MAIZE	Anc5	SOLTU	MEDTR	ARATH	Anc4	Anc3	Anc2	Anc1
@@ -51,7 +53,11 @@ OG455_2	0	2	2	1	4	0	0	0	4	1	1
 
 
 ### Result file 1: config.txt
- - Parsed information of newick_tree.txt file with regarding to the target_node that user input
- 
+```
+- Parsed information of newick_tree.txt file with regarding to the target_node that user input
+```
+
 ### Result file 2: matrix.txt (tab delimited)
+```
  - Filtered list of OGs from value_matrix.txt based on criteria that user input
+```

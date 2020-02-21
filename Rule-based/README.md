@@ -27,6 +27,7 @@ Works on generalized types of newick trees.
  - Refer to data/newick_tree.txt
  
  *e.g.*
+ 
 Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))
 
 (ppa,((osa,zma)Anc5,(stu,(mtr,ath)Anc4)Anc3)Anc2)Anc1
@@ -39,6 +40,7 @@ Anc1(ppa,Anc2(Anc5(osa,zma),Anc3(stu,Anc4(mtr,ath))))
  - Refer to data/value_matrix.txt
 
  *e.g.*
+ 
 OG_NAME	PHYPA	ORYSJ	MAIZE	Anc5	SOLTU	MEDTR	ARATH	Anc4	Anc3	Anc2	Anc1
 
 OG918_2	0	0	0	0	1	6	0	1	1	1	1

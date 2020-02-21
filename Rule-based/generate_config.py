@@ -4,7 +4,7 @@ Parse newick tree and return config file.
 USAGE:
 python generate_config.py [newick_tree.txt] [node_name] [config_file_name]
 
-Original: tree_parsor.py
+Original: tree_parsor.py, junha.shin@wisc.edu
 """
 import sys, re
 from collections import defaultdict

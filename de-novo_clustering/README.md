@@ -1,4 +1,5 @@
 ### 1. PROGRAM
+---------------
 ### findTransitionGenesets_miss2
 Clade-specific gene set selection program
 
@@ -39,6 +40,7 @@ Example usage:
 
 
 ### 2. REQUIREMENTS
+-------------------
 ### Requirement 1: input directory name
 >- A directory name that contains matrix, order and OG information (following requirements 2,3,4)
 
@@ -107,6 +109,7 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 
 
 ### 3. OUTPUT
+-------------
 ### Output 1: all_genes_clusterassignment_matrix.txt
 >- Same as matrix.txt but grouped and segmented by the de novo clustering result.
 >- Separated by "DUMMY###" line. *e.g.*

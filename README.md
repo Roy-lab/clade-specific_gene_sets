@@ -1,4 +1,4 @@
-# Clade-specific gene sets finding scripts
+# Scripts for finding clade-specific gene sets
 
 Scripts for selecting clade-specific gene sets from Arboretum result matrix
 

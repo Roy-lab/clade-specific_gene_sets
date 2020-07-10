@@ -104,8 +104,7 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 ### 3. OUTPUT
 ### Output 1: all_genes_clusterassignment_matrix.txt
 >- Same as matrix.txt but grouped and segmented by the de novo clustering result.
->- Separated by "DUMMY###" line 
->- *e.g.*
+>- Separated by "DUMMY###" line. *e.g.*
 ```
 DUMMY387        -100    -100    -100    -100    -100    -100    -100    -100    -100    -100    -100
 ```

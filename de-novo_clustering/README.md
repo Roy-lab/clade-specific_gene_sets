@@ -1,4 +1,5 @@
-### Program: findTransitionGenesets_miss2
+### 1. PROGRAM
+### findTransitionGenesets_miss2
 Clade-specific gene set selection program
 
 Example usage:
@@ -21,7 +22,7 @@ Example usage:
 ./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
 ```
 
-### Wrapper script: run_selection_de_novo.sh
+### run_selection_de_novo.sh
 A wrapper shell script for running findTransitionGenesets_miss2. Assigned the key input arguments.
 Look inside the script for the detailed descriptions for the arguments.
 
@@ -36,7 +37,8 @@ Example usage:
 ./run_selection_de_novo.sh thr0.3_miss5/ 0.3 5
 ```
 
-### REQUIREMENTS 
+
+### 2. REQUIREMENTS
 ### Requirement 1: input directory name
 >- A directory name that contains matrix, order and OG information (following requirements 2,3,4)
 
@@ -85,7 +87,8 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 ```
 
 ### Requirement 5: representative column name
->- Name of representative column name in the matrix.txt. *e.g.* ARATH
+>- Name of representative column (species) name in the matrix.txt. *e.g.* ARATH
+>- OGs that are having expression value in this column will be named as the contents (gene) name of this column (species).
 
 
 ### Requirement 6: output directory name
@@ -96,3 +99,38 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 >-threshold: parameter for hierarchical clustering branch length cutting point, controls number of output cluster sets
 >-min_set_size: parameter for minimum size number of the output sets (*e.g.* 5), filters out very small cluster sets less than this number
 >-max_missing_allow: parameter for maximum number of missing allowance, means *how many missing values are allowed in a OG tree*. About missing values, see the description in matrix.txt (requirement 2) above
+
+
+### OUTPUT
+### Output 1: all_genes_clusterassignment_matrix.txt
+>- Same as matrix.txt but grouped and segmented by the de novo clustering result.
+>- Separated by "DUMMY###" line 
+>- *e.g.*
+```
+DUMMY386        -100    -100    -100    -100    -100    -100    -100    -100    -100    -100    -100
+```
+
+### Output 2: all_genesets.txt
+>- Cluster results with cluster IDs and contents (gene, OG) IDs.
+>- Contents IDs are delimited by "#"
+>- *e.g.*
+```
+Cluster387      AT2G41160#AT1G10900#AT1G08350#OG3072_1#OG15469_1
+```
+
+### Output 3: 
+>- Cluster mean value matrix, which is a summary for all_genes_clusterassignment_matrix.txt
+>- Each clutser sets are represented as a mean value vector of columns (species).
+>- Mean value were calculated by taking mean of column-wise (species-wise mean). Negative missing values are not counted.
+>- *e.g.*
+```
+(clusterset387 in all_genes_clusterassignment_matrix.txt)
+AT2G41160       2       -1      -1      -1      2       2       4       4       2       2       2
+AT1G10900       2       -1      -1      -1      2       4       4       4       2       2       2
+AT1G08350       2       -1      -1      -1      2       4       4       4       2       2       2
+OG3072_1        2       -1      -1      -1      2       4       -1      4       2       2       2
+OG15469_1       -1      -1      -1      -1      2       4       -1      4       2       2       2
+
+(mean vector for clusterset387 in ordered_mean_clusterassign_matrix.txt)
+clusterset387   2       -1      -1      -1      2       4       4       4       2       2       2
+```

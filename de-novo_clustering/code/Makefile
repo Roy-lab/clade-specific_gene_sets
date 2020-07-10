@@ -5,5 +5,5 @@ CC=g++
 CFLAGS = -g
 
 findTransitionGenesets: $(SRC)
-	$(CC) $(SRC)  $(CFLAGS) -o findTransitionGenesets_miss
+	$(CC) $(SRC)  $(CFLAGS) -o findTransitionGenesets_miss2
 

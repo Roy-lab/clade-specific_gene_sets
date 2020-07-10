@@ -17,7 +17,8 @@ class Framework
 	int readDataMatrix(const char*, int maxmissing);	//JSmod
 	int readOGIDs(const char*,const char*);
 	int setSrcCellType(const char*);
-	int generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize);
+	//int generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize);
+	int generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize, int clusterresultsize);	// MOD200709
 	int generateOrderedClusterMeans(const char* aFName);
 	int reorder(const char* aFSuff,double threshold,const char* outdir,int mingenesetSize);
 	int readSpeciesOrder(const char* file);

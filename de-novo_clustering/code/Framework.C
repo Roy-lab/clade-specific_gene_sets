@@ -25,10 +25,10 @@ Framework::~Framework()
 /*This function will read in the name of the clusterassignment file and also the mark values that we will need. We need to store the mark values column wise as per
  * the columns of the data matrix */
 int 
-Framework::readDataMatrix(const char* aDirName, int maxmissing)	//JSmod
+Framework::readDataMatrix(const char* aDirName, int maxmissing)
 {
 	char aFName[1024];
-	sprintf(aFName,"%s/allspecies_clusterassign.txt",aDirName);
+	sprintf(aFName,"%s",aDirName);	// JSmod200709
 	ifstream inFile(aFName);
 	char* buffer=NULL;
 	int bufflen=0;
@@ -211,23 +211,32 @@ Framework::readSpeciesOrder(const char* sFile )
 //This function will generate one file which is the assignment of genes in all cell types and this will include everything. 
 //The second set of files will be the clustersets that will include all the individual transitions. I think we should also generate the cluster mark profiles for the clusterset.
 //It's better to output in heatmap.awk compatible format right here.
+//JS: DEPRECATED all heatmap.awk related parts
 int 
-Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize)
+//Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize)
+Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int mingenesetSize, int clusterresultsize)	// JSmod200709
 {
 	cout << "Entering Framework::generateTransitioningGeneSets" << endl;
 	map<int,map<string,int>*> modules;
 	map<int,HierarchicalClusterNode*> attribs;
 	cluster.setDistanceType(HierarchicalCluster::CITYBLOCK);
 	cluster.cluster(modules,nodeSet,threshold,attribs);
+	clusterresultsize = attribs.size();	// JSmod200709
+	if (attribs.size() < 2)	// JSmod200709
+	{
+		return 0;
+	}			// JSmod200709
 	double** dist=cluster.getDist();
-	char aFName[1024];
-	sprintf(aFName,"%s/all_assign.txt",outdir);
-	ofstream oFile(aFName);
+
+	//char aFName[1024];	// JSmod200709: disabled all_assign.txt file (for heatmap.awk)
+	//sprintf(aFName,"%s/all_assign.txt",outdir);
+	//ofstream oFile(aFName);
 
 	// DC add: create the geneset file
 	char gFName[1024];
 	sprintf(gFName, "%s/all_genesets.txt",outdir);
 	ofstream gFile(gFName);
+
 	//SK:  add file that is purely the cluster assignment matrix
 	char bFName[1024];
         sprintf(bFName,"%s/all_genes_clusterassignment_matrix.txt",outdir);
@@ -257,15 +266,15 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 			for(int j=0;j<hc->expr.size();j++)
 			{
 				string& colName=attribIDNameMap[j];
-				if(hc->expr[j]>=0)oFile<<(*ordering)[i]<< "||6\t" <<colName <<"||8\t" << hc->expr[j]<<"|1|"<< hc->expr[j]<< endl;
-				else oFile<<(*ordering)[i]<< "||6\t" <<colName <<"||8\t" << hc->expr[j]<<"|3|"<< hc->expr[j]<< endl;
+				//if(hc->expr[j]>=0)oFile<<(*ordering)[i]<< "||6\t" <<colName <<"||8\t" << hc->expr[j]<<"|1|"<< hc->expr[j]<< endl;
+				//else oFile<<(*ordering)[i]<< "||6\t" <<colName <<"||8\t" << hc->expr[j]<<"|3|"<< hc->expr[j]<< endl;
 			}
-			//Now put a vertical spacer
+			/*//Now put a vertical spacer
 			//we need this only once
 			if(c==0)
 			{
 				oFile <<"|- MyVspacer1|Spacer"<< endl;
-			}
+			}*/
 			//Not print out out the mark profiles too
 			//for(map<int,double>::iterator aIter=hc->attrib.begin();aIter!=hc->attrib.end();aIter++)
 			//for(int j=0;j<hc->expr.size();j++)
@@ -293,9 +302,9 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 				{
 					for(int m=0;m<markNames.size();m++)
                                         {
-                                                oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
+                                                //oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
                                         }
-					oFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
+					//oFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
 					continue;
 				}
 				vector<double>* expvals=geMgr->getExp(lociCelltype);
@@ -303,25 +312,25 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 				{
 					for(int m=0;m<markNames.size();m++)
 					{
-						oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << (*expvals)[m]<<"|2" << endl;
+						//oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << (*expvals)[m]<<"|2" << endl;
 					}
 				}
 				else
 				{
 					for(int m=0;m<markNames.size();m++)
                                         {
-						oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
+						//oFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
 					}
 				}
 				if(c==0 && i==0 && (j<hc->expr.size()-1))
 				{
-					oFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
+					//oFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
 				}
 			}
 			atcnt=hc->expr.size();	
 		}
 		//Now put a horizontal spacer		
-		oFile <<"|Spacer||"<<c << " |-"<< endl;
+		//oFile <<"|Spacer||"<<c << " |-"<< endl;
 		if((*ordering).size()>=mingenesetSize)
 		{
 			// DC
@@ -335,9 +344,10 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 			gFile << endl;
 			// end DC update
 			clusterset[c]=ordering;
-			char cFName[1024];
-			sprintf(cFName,"%s/clusterset%d.txt",outdir,c);
-                        ofstream coFile(cFName);
+
+			//char cFName[1024];	// JSmod200709: disabled clusterset###.txt files (for heatmap.awk)
+			//sprintf(cFName,"%s/clusterset%d.txt",outdir,c);
+                        //ofstream coFile(cFName);
 			//Show header
 			for(int i=0;i<ordering->size();i++)
 			{
@@ -347,11 +357,11 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 				for(int j=0;j<hc->expr.size();j++)
 				{
 					bFile << "\t" << hc->expr[j];
-					if(hc->expr[j]>0)coFile<<(*ordering)[i] <<"||6\t"<< attribIDNameMap[j] << "||8\t" << hc->expr[j]<<"|1|"<< hc->expr[j]<<endl;
-					else coFile<<(*ordering)[i] <<"||6\t"<< attribIDNameMap[j] << "||8\t" << hc->expr[j]<<"|3|"<< hc->expr[j]<<endl;
+					//if(hc->expr[j]>0)coFile<<(*ordering)[i] <<"||6\t"<< attribIDNameMap[j] << "||8\t" << hc->expr[j]<<"|1|"<< hc->expr[j]<<endl;
+					//else coFile<<(*ordering)[i] <<"||6\t"<< attribIDNameMap[j] << "||8\t" << hc->expr[j]<<"|3|"<< hc->expr[j]<<endl;
 				}
 				bFile << endl;
-				coFile <<"|- MyVspacer1|Spacer"<< endl;
+				//coFile <<"|- MyVspacer1|Spacer"<< endl;
 				//Not print out out the mark profiles too
 				for(int j=0;j<speciesOrder.size();j++)
 				{
@@ -377,10 +387,10 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 					{
 						for(int m=0;m<markNames.size();m++)
 						{
-							coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
+							//coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
 							//cout << "line " << 203 << " " << (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
 						}
-						coFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
+						//coFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
 						continue;
 					}
                                 	vector<double>* expvals=geMgr->getExp(lociCelltype);
@@ -388,7 +398,7 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 					{
 						for(int m=0;m<markNames.size();m++)
 						{
-							coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << (*expvals)[m]<<"|2" << endl;
+							//coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << (*expvals)[m]<<"|2" << endl;
 							//cout << "line " << 203 << " " << (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << (*expvals)[m]<<"|2" << endl;
 						}
 					}
@@ -396,14 +406,14 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 					{
 						for(int m=0;m<markNames.size();m++)
 						{
-							coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
+							//coFile<< (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
 							//#cout << "line " << 203 << " " << (*ordering)[i]<<"||6\t"<< colName << "_" << markNames[m] << "||6\t" << -100 <<"|3" << endl;
 						}
 					}
-					coFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
+					//coFile <<"|- cellmarkerVspacer"<<(j+1)<<"|Spacer"<< endl;
 				}
 			}
-			coFile.close();
+			//coFile.close();
 			bFile << "DUMMY" << c;
                 	for(int x=0;x<attribIDNameMap.size();x++)
                 	{
@@ -413,11 +423,12 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 		}
 		c++;
 	}
-	oFile.close();
+	//oFile.close();
 	bFile.close();
 	gFile.close(); // Close geneset file
 	cout << "Exiting Framework::generateTransitioningGeneSets" << endl;
-	return 0;
+	//return 0;
+	return clusterresultsize;	// JSmod200709
 }
 
 int
@@ -469,14 +480,14 @@ Framework::generateOrderedClusterMeans(const char* outDirName)
 	olo.setHierarchicalClusterNode(clusterMeans.getRoot());
 	vector <string> ordering;
 	olo.reorder(ordering);
-	cout << ordering.size() << endl;
-	char aFName[1024];
-	sprintf(aFName,"%s/ordered_clusterset_means.txt",outDirName);
-	ofstream oFile(aFName);
+	//cout << ordering.size() << endl;
+	//char aFName[1024];
+	//sprintf(aFName,"%s/ordered_clusterset_means.txt",outDirName);
+	//ofstream oFile(aFName);
 	for(int i=0;i<ordering.size();i++)
 	{
 		
-		cout << ordering[i] << endl;
+		//cout << ordering[i] << endl;
 		HierarchicalClusterNode* hc=meanNodeSet[ordering[i]];
 		vector<int>* meanD=meanD_Set[ordering[i]];
 		for(int j=0;j<meanD->size();j++)
@@ -484,12 +495,12 @@ Framework::generateOrderedClusterMeans(const char* outDirName)
 			if((*meanD)[j]>0)
 			{
 				//cout << (*ordering)[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|1|"<<(*meanD)[j]<< endl;
-				oFile << ordering[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|1|"<<(*meanD)[j]<< endl;
+				//oFile << ordering[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|1|"<<(*meanD)[j]<< endl;
 			}
 			else
 			{
 				//cout << (*ordering)[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|3|"<<(*meanD)[j]<< endl;
-				oFile << ordering[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|3|"<<(*meanD)[j]<< endl;
+				//oFile << ordering[i] << "||8\t" << attribIDNameMap[j] <<"||8\t" << (*meanD)[j]<<"|3|"<<(*meanD)[j]<< endl;
 			}
 		}
 		for(map<int,string>::iterator aIter=attribIDNameMap.begin();aIter!=attribIDNameMap.end();aIter++)
@@ -503,7 +514,7 @@ Framework::generateOrderedClusterMeans(const char* outDirName)
 			if(i==0 && aIter->first<attribIDNameMap.size())
                         {       
                                 //cout << "|- cellmarkerVspacer" << (aIter->first+1) << "|Spacer" << endl;      
-                                oFile << "|- cellmarkerVspacer" << (aIter->first+1) << "|Spacer" << endl;
+                                //oFile << "|- cellmarkerVspacer" << (aIter->first+1) << "|Spacer" << endl;
                         }
 			//Get the marks
 			GeneExpManager* geMgr=markProfileSet[cellName];
@@ -514,20 +525,20 @@ Framework::generateOrderedClusterMeans(const char* outDirName)
 				sprintf(cellMark,"%s_%s",cellName.c_str(),colNames[j].c_str());
 				string attribName(cellMark);
 				int markID=attribNameIDMap_Profile[attribName];
-				if(hc->expr[markID]!=-100) oFile << ordering[i] << "||8\t" << meanLabels[markID] <<"||8\t" << hc->expr[markID] << "|2" << endl;
-				else oFile << ordering[i] << "||8\t" << meanLabels[markID] << "||8\t" << hc->expr[markID] << "|3" << endl;
+				//if(hc->expr[markID]!=-100) oFile << ordering[i] << "||8\t" << meanLabels[markID] <<"||8\t" << hc->expr[markID] << "|2" << endl;
+				//else oFile << ordering[i] << "||8\t" << meanLabels[markID] << "||8\t" << hc->expr[markID] << "|3" << endl;
 				//if(hc->expr[markID]!=-100) cout << (*ordering)[i] << "||8\t" << attribName <<"||8\t" << hc->expr[markID] << "|2" << endl;
                                 //else cout << (*ordering)[i] << "||8\t" << attribName << "||8\t" << hc->expr[markID] << "|3" << endl;
 			}
 		}
 	}
-	oFile.close();
+	//oFile.close();
 	char bFName[1024];
         sprintf(bFName,"%s/ordered_mean_clusterassign_matrix.txt",outDirName);
         ofstream mFile(bFName);
 	mFile << "Species";
 	//prep just one initial example:
-	cout << ordering[0] << endl;
+	//cout << ordering[0] << endl;
         HierarchicalClusterNode* hc=meanNodeSet[ordering[0]];
         vector<int>* meanD=meanD_Set[ordering[0]];
 	for(int j=0;j<meanD->size();j++)
@@ -538,7 +549,7 @@ Framework::generateOrderedClusterMeans(const char* outDirName)
 	for(int i=0;i<ordering.size();i++)
         {
 
-                cout << ordering[i] << endl;
+                //cout << ordering[i] << endl;
                 HierarchicalClusterNode* hc=meanNodeSet[ordering[i]];
                 vector<int>* meanD=meanD_Set[ordering[i]];
 		mFile << ordering[i];
@@ -768,7 +779,7 @@ Framework::getNameinCelltype(const char* locus, const char* celltype)
 		pos=strchr((char*)locus,'_');
 		ogid=atoi(locus+2);
 		dup=atoi(pos+1)-1;
-		cout << "Found OGID: " << ogid << " on level: " << dup << endl;
+		//cout << "Found OGID: " << ogid << " on level: " << dup << endl;
 		mgrp = mor.getMappedOrthogroups().find(ogid)->second;
 		map<int,map<string,string>*> geneSets=mgrp->getGeneSets();
 		if(geneSets.find(dup)!=geneSets.end())
@@ -777,7 +788,7 @@ Framework::getNameinCelltype(const char* locus, const char* celltype)
                 	if(levelSet!=NULL && levelSet->find(celltype)!=levelSet->end())
                 	{
                 		name=levelSet->find(celltype)->second.c_str();
-				cout << "Found " << name << " for " << celltype << endl;
+				//cout << "Found " << name << " for " << celltype << endl;
                 	}
 		}
 		else
@@ -790,21 +801,37 @@ Framework::getNameinCelltype(const char* locus, const char* celltype)
 }
 
 int
-main(int argc, const char** argv)
+main(int argc, const char** argv)	// JSmod200709
 {
-	if(argc!=10)	//JSmod
+	if(argc!=10)
 	{
-		//This is configured for cmint and expects specific files. So make sure to have those files in the datadir
-		cout <<"Usage: ./findTransitionGenesets cmint_result_dir celltypeorder OGID_file srccelltype threshold outputdir maxgenesetsize plots_species_order maxmissing" << endl;	//JSmod
+		cout <<"Usage: ./findTransitionGenesets input_dir cluster_matrix celltypeorder OGID_file srccelltype outputdir threshold maxgenesetsize maxmissing" << endl;
 		return 0;
 	}
 	Framework fw;
-	fw.readDataMatrix(argv[1],atoi(argv[9]));	//JSmod
-	fw.readSpeciesOrder(argv[8]);
-	fw.readOGIDs(argv[2],argv[3]);
-	fw.setSrcCellType(argv[4]);
-	fw.generateTransitioningGeneSets(atof(argv[5]),argv[6],atoi(argv[7]));
+	char input_mat[1024];
+	sprintf(input_mat,"%s/%s",argv[1],argv[2]);
+        char input_order[1024];
+        sprintf(input_order,"%s/%s",argv[1],argv[3]);
+        char input_og[1024];
+        sprintf(input_og,"%s/%s",argv[1],argv[4]);
+	char outputDirCmdF[1024];
+	sprintf(outputDirCmdF,"mkdir -p  %s",argv[6]);
+	system(outputDirCmdF);
+
+	fw.readDataMatrix(input_mat,atoi(argv[9]));
+	fw.readSpeciesOrder(input_order);
+	fw.readOGIDs(input_order,input_og);
+	fw.setSrcCellType(argv[5]);
+
+	int clusterresultsize = fw.generateTransitioningGeneSets(atof(argv[7]),argv[6],atoi(argv[8]),clusterresultsize);
+	cout << "Number of all hierarchical clusters: " << clusterresultsize << endl;
+	if (clusterresultsize < 1)
+	{
+		cout << "Insufficient number of hierarchical clusters defined. Choose another *threshold* for branch distance." << endl;
+		return 0;
+	}
 	fw.generateOrderedClusterMeans(argv[6]);
 	return 0;
-}
+}					// JSmod200709
 

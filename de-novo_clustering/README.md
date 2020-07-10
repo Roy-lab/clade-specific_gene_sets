@@ -1,13 +1,8 @@
-### * run_selection_de_novo.sh
-A wrapper shell script for rule-based selection.
-
-### * findTransitionGenesets_miss2
+### - findTransitionGenesets_miss2
 Clade-specific gene set selection program
 
 Example usage:
 ```
-./run_selection_de_novo.sh [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
-
 ./findTransitionGenesets_miss2 [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
 
  - [input_dir]: newick format tree (txt file)
@@ -23,12 +18,28 @@ Example usage:
 
 *e.g.*
 ```
-./run_selection_de_novo.sh input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
-
 ./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
 ```
 
-### Requirement file 1: matrix.txt (tab delimited)
+### - run_selection_de_novo.sh
+A wrapper shell script for running findTransitionGenesets_miss2. Assigned the key input arguments.
+Look inside the script for the detailed descriptions for the arguments.
+
+Example usage:
+```
+./run_selection_de_novo.sh [output_dir_name] [threshold] [max_missing_allow]
+
+```
+
+*e.g.*
+```
+./run_selection_de_novo.sh thr0.3_miss5/ 0.3 5
+```
+
+### Requirement 1: direcoty name
+>- A directory name that contains matrix, order and OG information (following requirements 2,3,4)
+
+### Requirement 2: matrix.txt file (tab delimited)
 >- First row should be legend for data columns
 >- format: " **Loci (\t) col1 (\t) col2 (\t) ...** "
 >- Cluster ID starts from "0". e.g. if k=3, cluster IDs are 0, 1, 2.
@@ -47,7 +58,7 @@ OG223_1	2	-2	-2	-2	-2	-2	-2	-2	-2	3	2
 OG223_2	-2	3	3	3	-2	-2	-2	3	3	3	2
 ```
 
-### Requirement file 2: order.txt
+### Requirement 2: order.txt file
 >- List of column names without Ancestral columns (Anc#), ordered same as matrix.txt
 >- *e.g.*
 ```
@@ -59,7 +70,7 @@ MEDTR
 ARATH
 ```
 
-### Requirement file 3: OG.txt
+### Requirement 3: OG.txt file
 >- List of orthogroups (OGs), with profile of gene IDs, ordered same as order.txt
 >- format: " **OGID[\t]GeneID,GeneID,GeneID,...** "
 >- Duplicated OGs are designated as "_number". *e.g.* OG223_1, OG223_2 

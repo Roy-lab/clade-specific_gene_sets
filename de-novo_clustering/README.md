@@ -1,3 +1,4 @@
+---------------
 ### 1. PROGRAM
 ---------------
 ### findTransitionGenesets_miss2
@@ -38,7 +39,7 @@ Example usage:
 ./run_selection_de_novo.sh output/ 0.3 5
 ```
 
-
+-------------------
 ### 2. REQUIREMENTS
 -------------------
 ### Requirement 1: input directory name
@@ -107,7 +108,7 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
    So, if this value is "0", only OGs that have all genes and values would be used for the clustering and the ohter OGs with at least one missing value will be dropped.
    About missing values in detail, see the description in matrix.txt (requirement 2) above.
 
-
+-------------
 ### 3. OUTPUT
 -------------
 ### Output 1: all_genes_clusterassignment_matrix.txt

@@ -1,33 +1,54 @@
-### run_findTransitionGenesets.sh
-A running shell script for de novo clustering selection.
+### run_selection_de_novo.sh
+A wrapper shell script for rule-based selection.
+
+### findTransitionGenesets_miss2
+Clade-specific gene set selection program
 
 Example usage:
 ```
-./run_findTransitionGenesets.sh [clustering_threshold] [missing_threshold]
- - clustering_threshold: threshold value for hierarchical clustering, 
-   number means branch length of the dendrogram [0, 1], 
-   which affects to the assignment of gene sets.
- - missing_threhsold: threshold count number for allowance of missing values in the profile
+./run_selection_de_novo.sh [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
+
+./findTransitionGenesets_miss2 [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
+
+ - [input_dir]: newick format tree (txt file)
+ - [matrix.txt]: value matrix file (txt file)
+ - [order.txt]: order of columns of the matrix.txt without Anc columns (txt file)
+ - [OG.txt]: Orthogroup (OG) information file (txt file)
+ - [col_name]: ID of representative 
+ - [ouput_dir_name]: output directory name
+ - [threshold]: parameter for hierarchical clustering branch length cutting point, controls number of output clusters
+ - [min_set_size]: parameter for minimum size of the output sets (e.g. 5)
+ - [max_missing_allow]: parameter for max number of missing allowance
 ```
 
 *e.g.*
+```
+./run_selection_de_novo.sh input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
 
-./run_findTransitionGenesets.sh **0.3** **5**
- - make gene sets by doing hierarchical clustering based on profiles which contain upto 5 missing values (deal with "0"),
- - and assign gene sets by the cluster assignments of branch length at 0.3 of hierarchical clustering.
+./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
+```
 
+### Requirement file 1: matrix.txt (tab delimited)
+>- First row should be legend for data columns
+>- format: " **Loci (\t) col1 (\t) col2 (\t) ...** "
+>- Cluster ID starts from "0". e.g. if k=3, cluster IDs are 0, 1, 2.
+>- **negative value** means **missing value**, 
+   which are genes that are existing in orthogroup but don't have measured expression values (-1)
+   OR which are not exsiting ortholog in the orthogroup (-2).
+>- Refer to input/matrix.txt
 
-### Requirements: 
-1. findTransitionGenesets_miss
->- C++ program for fulfilling hierarchical clustering by allowing missing cells in the profile.
->- Compile code by executing "make" in the **code/** directory.
+ *e.g.*
+``` 
+Loci	PHYPA	ORYSJ	MAIZE	Anc5	SOLTU	MEDTR	ARATH	Anc4	Anc3	Anc2	Anc1
+OG63_1	-2	-2	-2	-2	0	-2	-2	-2	0	0	0
+OG63_2	-2	-2	-2	-2	0	-2	-2	-2	0	0	0
+OG63_3	-2	-2	-2	-2	-1	-2	-2	-2	0	0	0
+OG223_1	2	-2	-2	-2	-2	-2	-2	-2	-2	3	2
+OG223_2	-2	3	3	3	-2	-2	-2	3	3	3	2
+```
 
-2. input/allspecies_clusterassign.txt
->- Cluster assignment matrix. Result file of Arboretum.
->- Note: file name should be "allspecies_clusterassign.txt" since the **findTransitionGenesets_miss** recognize this name.
-
-3. input/speciesorder.txt
->- List of Species names, ordered by species tree (without ancestors)
+### Requirement file 2: order.txt
+>- List of column names without Ancestral columns (Anc#), ordered same as matrix.txt
 >- *e.g.*
 ```
 PHYPA
@@ -38,10 +59,10 @@ MEDTR
 ARATH
 ```
 
-4. input/OGID_4_denovo.txt
->- List of orthogroups (OGs), with profile of gene IDs which is ordered by species tree 
-  (note that same order with **speciesorder.txt**)
+### Requirement file 3: OG.txt
+>- List of orthogroups (OGs), with profile of gene IDs, ordered same as order.txt
 >- format: " **OGID[\t]GeneID,GeneID,GeneID,...** "
+>- Duplicated OGs are designated as "_number". *e.g.* OG223_1, OG223_2 
 >- Write "NONE" if there's no species gene ID assigned to the OG.
 >- *e.g.*
 ```

@@ -101,13 +101,13 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 >-max_missing_allow: parameter for maximum number of missing allowance, means *how many missing values are allowed in a OG tree*. About missing values, see the description in matrix.txt (requirement 2) above
 
 
-### OUTPUT
+### 3. OUTPUT
 ### Output 1: all_genes_clusterassignment_matrix.txt
 >- Same as matrix.txt but grouped and segmented by the de novo clustering result.
 >- Separated by "DUMMY###" line 
 >- *e.g.*
 ```
-DUMMY386        -100    -100    -100    -100    -100    -100    -100    -100    -100    -100    -100
+DUMMY387        -100    -100    -100    -100    -100    -100    -100    -100    -100    -100    -100
 ```
 
 ### Output 2: all_genesets.txt

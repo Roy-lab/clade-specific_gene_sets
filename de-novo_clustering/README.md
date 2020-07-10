@@ -97,8 +97,13 @@ OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 
 ### Requirement 7: input parameters
 >- **threshold**: parameter for hierarchical clustering branch length cutting point, controls number of output cluster sets
+
 >- **min_set_size**: parameter for minimum size number of the output sets (*e.g.* 5), filters out very small cluster sets less than this number
->- **max_missing_allow**: parameter for maximum number of missing allowance, means ***"how many missing values are allowed in a OG tree"***. About missing values, see the description in matrix.txt (requirement 2) above
+
+>- **max_missing_allow**: parameter for maximum number of missing allowance, 
+   means ***"By including OGs for the clustering, how many missing values are allowed in a OG tree?"***. 
+   So, if this value is "0", only OGs that have all genes and values would be used for the clustering and the ohter OGs with at least one missing value will be dropped.
+   About missing values in detail, see the description in matrix.txt (requirement 2) above.
 
 
 ### 3. OUTPUT

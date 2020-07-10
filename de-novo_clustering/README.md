@@ -19,7 +19,7 @@ Example usage:
 
 *e.g.*
 ```
-./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
+./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH output/ 0.3 5 5
 ```
 
 ### run_selection_de_novo.sh
@@ -34,7 +34,7 @@ Example usage:
 
 *e.g.*
 ```
-./run_selection_de_novo.sh thr0.3_miss5/ 0.3 5
+./run_selection_de_novo.sh output/ 0.3 5
 ```
 
 

@@ -1,7 +1,7 @@
-### run_selection_de_novo.sh
+### * run_selection_de_novo.sh
 A wrapper shell script for rule-based selection.
 
-### findTransitionGenesets_miss2
+### * findTransitionGenesets_miss2
 Clade-specific gene set selection program
 
 Example usage:

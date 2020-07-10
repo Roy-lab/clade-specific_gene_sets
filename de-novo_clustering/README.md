@@ -1,4 +1,4 @@
-### - findTransitionGenesets_miss2
+### Program: findTransitionGenesets_miss2
 Clade-specific gene set selection program
 
 Example usage:
@@ -11,8 +11,8 @@ Example usage:
  - [OG.txt]: Orthogroup (OG) information file (txt file)
  - [col_name]: ID of representative 
  - [ouput_dir_name]: output directory name
- - [threshold]: parameter for hierarchical clustering branch length cutting point, controls number of output clusters
- - [min_set_size]: parameter for minimum size of the output sets (e.g. 5)
+ - [threshold]: parameter for hierarchical clustering branch length cutting point
+ - [min_set_size]: parameter for minimum size of the output sets
  - [max_missing_allow]: parameter for max number of missing allowance
 ```
 
@@ -21,7 +21,7 @@ Example usage:
 ./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH thr0.3_miss5/ 0.3 5 5
 ```
 
-### - run_selection_de_novo.sh
+### Wrapper script: run_selection_de_novo.sh
 A wrapper shell script for running findTransitionGenesets_miss2. Assigned the key input arguments.
 Look inside the script for the detailed descriptions for the arguments.
 
@@ -36,7 +36,8 @@ Example usage:
 ./run_selection_de_novo.sh thr0.3_miss5/ 0.3 5
 ```
 
-### Requirement 1: direcoty name
+### REQUIREMENTS 
+### Requirement 1: input directory name
 >- A directory name that contains matrix, order and OG information (following requirements 2,3,4)
 
 ### Requirement 2: matrix.txt file (tab delimited)
@@ -58,7 +59,7 @@ OG223_1	2	-2	-2	-2	-2	-2	-2	-2	-2	3	2
 OG223_2	-2	3	3	3	-2	-2	-2	3	3	3	2
 ```
 
-### Requirement 2: order.txt file
+### Requirement 3: order.txt file
 >- List of column names without Ancestral columns (Anc#), ordered same as matrix.txt
 >- *e.g.*
 ```
@@ -70,7 +71,7 @@ MEDTR
 ARATH
 ```
 
-### Requirement 3: OG.txt file
+### Requirement 4: OG.txt file
 >- List of orthogroups (OGs), with profile of gene IDs, ordered same as order.txt
 >- format: " **OGID[\t]GeneID,GeneID,GeneID,...** "
 >- Duplicated OGs are designated as "_number". *e.g.* OG223_1, OG223_2 
@@ -82,3 +83,16 @@ OG474_2	PP1S63_51V6,NONE,NONE,PGSC0003DMG400019342,MTR_2g099990,AT5G60470
 OG474_3	NONE,Os01g0242200,Zm00001d009030,PGSC0003DMG400024700,MTR_8g017210,AT5G66730
 OG474_4	NONE,NONE,Zm00001d039254,PGSC0003DMG400003372,MTR_4g059870,AT5G44160
 ```
+
+### Requirement 5: representative column name
+>- Name of representative column name in the matrix.txt. *e.g.* ARATH
+
+
+### Requirement 6: output directory name
+>- A directory name that will be written out result files.
+
+
+### Requirement 7: input parameters
+>-threshold: parameter for hierarchical clustering branch length cutting point, controls number of output cluster sets
+>-min_set_size: parameter for minimum size number of the output sets (*e.g.* 5), filters out very small cluster sets less than this number
+>-max_missing_allow: parameter for maximum number of missing allowance, means *how many missing values are allowed in a OG tree*. About missing values, see the description in matrix.txt (requirement 2) above

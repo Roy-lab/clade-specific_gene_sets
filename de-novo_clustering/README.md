@@ -118,7 +118,7 @@ DUMMY387        -100    -100    -100    -100    -100    -100    -100    -100    
 Cluster387      AT2G41160#AT1G10900#AT1G08350#OG3072_1#OG15469_1
 ```
 
-### Output 3: 
+### Output 3: ordered_mean_clusterassign_matrix.txt
 >- Cluster mean value matrix, which is a summary for all_genes_clusterassignment_matrix.txt
 >- Each clutser sets are represented as a mean value vector of columns (species).
 >- Mean value were calculated by taking mean of column-wise (species-wise mean). Negative missing values are not counted.

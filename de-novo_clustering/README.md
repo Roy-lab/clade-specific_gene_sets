@@ -8,7 +8,7 @@ Example usage:
 ```
 ./findTransitionGenesets_miss2 [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
 
- - [input_dir]: newick format tree (txt file)
+ - [input_dir]: input directory that contains matrix, order and OG information
  - [matrix.txt]: value matrix file (txt file)
  - [order.txt]: order of columns of the matrix.txt without Anc columns (txt file)
  - [OG.txt]: Orthogroup (OG) information file (txt file)

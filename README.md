@@ -6,4 +6,4 @@ About the detailed usage, please see README in the directory.
 
 **Releases**
 ----------
-[![DOI](https://zenodo.org/badge/175703431.svg)](https://zenodo.org/badge/latestdoi/175703431) v1.1.0
+[![DOI](https://zenodo.org/badge/175703431.svg)](https://zenodo.org/badge/latestdoi/175703431) v1.1.1

@@ -1,5 +1,5 @@
-# Scripts for finding clade-specific gene sets
+# Scripts for finding gene sets with combinatorial patterns
 
-Scripts for selecting clade-specific gene sets from Arboretum result matrix
+This script finds sets of genes that change their cluster assignment across Arboretum clusters based on hierarchical clustering of the Arboretum result matrix.<br>
 
-Please see README.md in each directory.
+About the detailed usage, please see README in the directory.

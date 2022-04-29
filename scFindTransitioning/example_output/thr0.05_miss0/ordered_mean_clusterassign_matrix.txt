@@ -1,0 +1,11 @@
+Species	c1	c3	c4	c2
+clusterset30	1	1	4	1
+clusterset32	2	4	4	1
+clusterset37	4	4	2	2
+clusterset29	2	2	2	4
+clusterset28	5	4	4	4
+clusterset43	1	4	1	1
+clusterset35	1	1	1	4
+clusterset34	1	1	4	4
+clusterset40	4	1	1	1
+clusterset38	5	5	5	4

@@ -252,13 +252,29 @@ Framework::generateTransitioningGeneSets(double threshold,const char* outdir,int
 	olo.setDist(dist);
 	for(map<int,HierarchicalClusterNode*>::iterator aIter=attribs.begin();aIter!=attribs.end();aIter++)
 	{
-		olo.setHierarchicalClusterNode(aIter->second);
-		if(aIter->second->left!=NULL || aIter->second->right!=NULL)
-		{
-		//	cout <<"Stop here " << endl;
-		}
+		//SR added this check of 100 elements in the set.
+		map<string,int>* members=modules[c];
 		vector <string>* ordering =new vector<string>;
-		olo.reorder(*ordering);
+		if(members->size()>100)
+		{
+			for(map<string,int>::iterator mIter=members->begin();mIter!=members->end();mIter++)
+			{
+				ordering->push_back(mIter->first);
+			}
+		}
+		else
+		{
+			olo.setHierarchicalClusterNode(aIter->second);
+			olo.reorder(*ordering);
+		}
+//		olo.setHierarchicalClusterNode(aIter->second);
+//		if(aIter->second->left!=NULL || aIter->second->right!=NULL)
+//		{
+//			cout <<"Stop here " << endl;
+//		}
+//		vector <string>* ordering =new vector<string>;
+//		olo.reorder(*ordering);
+
 		for(int i=0;i<ordering->size();i++)
 		{
 			HierarchicalClusterNode* hc=backup[(*ordering)[i]];

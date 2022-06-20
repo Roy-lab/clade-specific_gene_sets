@@ -24,19 +24,20 @@ Example usage:
 ./findTransitionGenesets_miss2 input/ matrix.txt speciesorder.txt OGIDs_all.txt ARATH output/ 0.3 5 5
 ```
 
-### run_selection_de_novo.sh
-A wrapper shell script for running findTransitionGenesets_miss2. Assigned the key input arguments.
-Look inside the script for the detailed descriptions for the arguments.
+### run_findTransitionGenesets.sh
+A wrapper shell script for running findTransitionGenesets_miss2. Assigned the key input arguments.<br>
+Look inside the script for the detailed descriptions for the arguments.<br>
+You might need to change the given paths for orders and ogids files for your own on behalf.
 
 Example usage:
 ```
-./run_selection_de_novo.sh [output_dir_name] [threshold] [max_missing_allow]
+./run_findTransitionGenesets.sh [output_dir_name] [threshold] [max_missing_allow]
 
 ```
 
 *e.g.*
 ```
-./run_selection_de_novo.sh output/ 0.3 5
+./run_findTransitionGenesets.sh output/ 0.3 5
 ```
 
 -------------------

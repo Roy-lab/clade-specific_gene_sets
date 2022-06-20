@@ -4,7 +4,7 @@
 ### scFindTransitioning
 C++ code for finding transitioning gene sets (hierarchical clustering)
 
-### run_selection_de_novo.sh
+### run_findTransitionGenesets.sh
 An examplery wrapper shell script for running scFindTransitioning.<br>
 Please see inside the script for the detailed descriptions for the arguments.
 

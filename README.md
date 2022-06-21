@@ -1,5 +1,5 @@
 # clade-specific_gene_sets (findTransitionGeneset)
-The original version with text outputs for Heatmap.awk (http://compbio.mit.edu/pouyak/software/Heatmap.awk).<br><br>
+The default code with text outputs for Heatmap.awk (http://compbio.mit.edu/pouyak/software/Heatmap.awk).<br><br>
 For a sepcificified version of the code, please follow the links:<br>
 - de novo method for finding clade specific genesets: https://github.com/Roy-lab/clade-specific_gene_sets/tree/v2/de-novo_clustering
 - single cell version (scFindTransitioning): https://github.com/Roy-lab/clade-specific_gene_sets/tree/scFindTransitioning

@@ -1,0 +1,8 @@
+target_anc_point=7
+object=5 6 7
+extant=5 6
+subancestor=
+ancestor=8 9 10
+negate=0 1 2 3 4
+gnlist=data/all_oglist.txt
+matrix=data/allspecies_clusterassign_pattern_matrix_reordered.txt

@@ -6,19 +6,20 @@ For a sepcificified version of the code, please follow the links:<br>
 <br>
 
 ## Usage
-```
-./findTransitionGenesets_miss [input_dir] [matrix.txt] [order.txt] [OG.txt] [col_name] [output_dir_name] [threshold] [min_set_size] [max_missing_allow]
+./findTransitionGenesets_miss [input_dir] [order] [OGID] [SRC_name] [threshold] [output_name] [min_size] [printing_order] [max_missing]
 
- - [input_dir]: result directory from arboretum/escarole
- - [matrix.txt]: value matrix text file (tab deimited, MUST HAVE HEADER shaped as  " Loci (\t) SPC1 (\t) SPC2 (\t) ... ")
- - [order.txt]: order of species (column) names of the matrix.txt WITHOUT Anc columns (a text file)
- - [OG.txt]: Orthogroup (OG) information file (a text file)
- - [col_name]: ID of representative SPC
- - [ouput_dir_name]: output directory name
- - [threshold]: parameter for hierarchical clustering branch length cutting point (e.g. 0.05)
- - [min_set_size]: parameter for minimum size of the output sets (e.g. 5)
- - [max_missing_allow]: parameter for max number of missing allowance (e.g. 0)
-```
+ - [input_dir]: result directory from arboretum/cmint/escarole
+ > NOTE for the input cluster assignment matrix file: <br>
+ > TAB deimited <br>
+ > MUST HAVE HEADER shaped as  " Loci (\t) SPC1 (\t) SPC2 (\t) ... "
+ - [order]: order of species (column) names of the matrix.txt WITHOUT Anc columns (a text file)
+ - [OGID]: Orthogroup (OG) information file (a text file)
+ - [SRC_name]: representative (source) SPC ID name
+ - [threshold]: a value for hierarchical clustering branch length cutting point (e.g. 0.05)
+ - [ouput_name]: output directory name
+ - [min_size]: a value for minimum size of the output sets (e.g. 5)
+ - [printing_order]: order of species (column) names for printing out results (a text file)
+ - [max_missing]: a values for maximum number of missing allowance (e.g. 0)
 <br>
 
 ## Specificity of this version (uploaded Jun 21st 2022)
